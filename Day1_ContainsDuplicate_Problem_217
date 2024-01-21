@@ -24,13 +24,16 @@ public class Solution {
     public bool ContainsDuplicate(int[] nums)
     {
         HashSet<int> distinctNumbers = new HashSet<int>();
-        bool response = false;
 
         for (int i = 0; i < nums.Length; i++)
         {
-            response = !distinctNumbers.Add(nums[i]) ? true : false;
+            if(distinctNumbers.Contains(nums[i]))
+            {
+                return true;
+            }
+            distinctNumbers.Add(nums[i]);
         }
-        return response;
+        return false;
     }
 
     static void Main(string[] args)
